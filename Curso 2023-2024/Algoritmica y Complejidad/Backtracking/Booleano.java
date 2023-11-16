@@ -1,9 +1,9 @@
-package org.example.Ejercicios.Backtracking;
+package Backtracking;
 
 public class Booleano {
     private boolean valor;
 
-    public Booleano(boolean valor){
+    public Booleano(boolean valor) {
         this.valor = valor;
     }
 

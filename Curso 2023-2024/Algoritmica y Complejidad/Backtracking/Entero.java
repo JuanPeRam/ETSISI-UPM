@@ -1,9 +1,10 @@
-package org.example.Ejercicios.Backtracking;
+package Backtracking;
 
 public class Entero {
 
     private int valor;
-    public Entero(int valor){
+
+    public Entero(int valor) {
         this.valor = valor;
     }
 

@@ -1,4 +1,4 @@
-package org.example.Ejercicios.Backtracking;
+package Backtracking;
 
 /*
     * Problema del edificio
@@ -17,20 +17,16 @@ public class Edificios {
 
     public static void main(String[] args) {
         int n = 6;
-        int[] vectorOrigen = {0,1,3,4,5};
-        int[] vectorDestino = {2,0,4,3,3};
-        boolean[] solicitudes = aprobarSolicitudes(n,vectorOrigen,vectorDestino);
-        System.out.print("[");
-        for(int i=0;i<solicitudes.length;i++){
-            System.out.print(solicitudes[i]?"V":"F");
-            if(i<solicitudes.length-1) System.out.print(",");
-        }
-        System.out.print("]");
+        int[] vectorOrigen = { 0, 1, 3, 4, 5 };
+        int[] vectorDestino = { 2, 0, 4, 3, 3 };
+        boolean[] solicitudes = aprobarSolicitudes(n, vectorOrigen, vectorDestino);
+        Impresor.printBooleanArray(solicitudes);
     }
 
-    public static class Entero{
+    public static class Entero {
         private int valor;
-        public Entero(int valor){
+
+        public Entero(int valor) {
             this.valor = valor;
         }
 
@@ -43,23 +39,27 @@ public class Edificios {
         }
     }
 
-    static boolean[] aprobarSolicitudes(int numEdificios, int[] vectorOrigen, int[] vectorDestino){
+    static boolean[] aprobarSolicitudes(int numEdificios, int[] vectorOrigen, int[] vectorDestino) {
         int[] numPersonas = new int[numEdificios];
-        for(int i=0;i<numPersonas.length;i++) numPersonas[i] =0;
+        for (int i = 0; i < numPersonas.length; i++)
+            numPersonas[i] = 0;
         boolean[] solucion = new boolean[vectorDestino.length];
         boolean[] mejorSolucion = new boolean[vectorDestino.length];
         int solicitudesAprobadas = 0;
         Entero maxSolicitudesAprobadas = new Entero(0);
         int nivel = 0;
-        aprobarSolicitudesBack(vectorOrigen,vectorDestino,numPersonas,solucion,mejorSolucion,nivel,solicitudesAprobadas,maxSolicitudesAprobadas);
+        aprobarSolicitudesBack(vectorOrigen, vectorDestino, numPersonas, solucion, mejorSolucion, nivel,
+                solicitudesAprobadas, maxSolicitudesAprobadas);
         return mejorSolucion;
     }
 
-    static void aprobarSolicitudesBack(int[] vectorOrigen, int[] vectorDestino, int[] numPersonas, boolean[] solucion, boolean[] mejorSolucion, int nivel, int solicitudesAprobadas, Entero maxSolicitudesAprobadas) {
+    static void aprobarSolicitudesBack(int[] vectorOrigen, int[] vectorDestino, int[] numPersonas, boolean[] solucion,
+            boolean[] mejorSolucion, int nivel, int solicitudesAprobadas, Entero maxSolicitudesAprobadas) {
         if (nivel == vectorOrigen.length) {
             if (esSolucion(numPersonas) && solicitudesAprobadas > maxSolicitudesAprobadas.getValor()) {
                 maxSolicitudesAprobadas.setValor(solicitudesAprobadas);
-                for(int i=0;i<mejorSolucion.length;i++) mejorSolucion[i] = solucion[i];
+                for (int i = 0; i < mejorSolucion.length; i++)
+                    mejorSolucion[i] = solucion[i];
             }
         } else {
             int c = 0;
@@ -71,7 +71,8 @@ public class Edificios {
                     solicitudesAprobadas++;
                 }
                 nivel++;
-                aprobarSolicitudesBack(vectorOrigen, vectorDestino, numPersonas, solucion, mejorSolucion, nivel, solicitudesAprobadas, maxSolicitudesAprobadas);
+                aprobarSolicitudesBack(vectorOrigen, vectorDestino, numPersonas, solucion, mejorSolucion, nivel,
+                        solicitudesAprobadas, maxSolicitudesAprobadas);
                 nivel--;
                 solucion[nivel] = false;
                 if (c == 1) {
@@ -85,11 +86,12 @@ public class Edificios {
         }
     }
 
-    static boolean esSolucion(int[] numPersonas){
+    static boolean esSolucion(int[] numPersonas) {
         boolean esSolucion = true;
-        for(int i=0;i<numPersonas.length;i++){
-            if(numPersonas[i] != 0) esSolucion = false;
+        for (int i = 0; i < numPersonas.length; i++) {
+            if (numPersonas[i] != 0)
+                esSolucion = false;
         }
-        return  esSolucion;
+        return esSolucion;
     }
 }
