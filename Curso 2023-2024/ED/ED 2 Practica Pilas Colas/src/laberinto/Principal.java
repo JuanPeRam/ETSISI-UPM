@@ -42,7 +42,21 @@ public class Principal {
     }
     // TODO Completar ls prueba usando LaberintoStack
     public void pruebaStack () {
-
+        char[][] tabla = laberinto1();
+        Coordenada entrada, salida;
+        entrada = new Coordenada(1, 0);
+        salida = new Coordenada(3, 5);
+        System.out.println();
+        System.out.println("USANDO LA CLASE Pila:");
+        LaberintoStack laberinto = new LaberintoStack(tabla, entrada, salida);
+        System.out.println();
+        laberinto.mostrar();
+        System.out.println();
+        if (laberinto.existeCamino()) {
+            System.out.println("Existe camino desde la entrada " + entrada + " a la salida " + salida);
+        } else {
+            System.out.println("No existe camino desde la entrada " + entrada + " a la salida " + salida);
+        }
     }
 
     public static void main(String[] args) {

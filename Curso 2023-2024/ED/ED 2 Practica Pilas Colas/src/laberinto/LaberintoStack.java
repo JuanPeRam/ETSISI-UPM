@@ -4,6 +4,7 @@ package laberinto;
  * @author Estructuras de Datos
  * @version 1.0
  */
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class LaberintoStack {
@@ -65,13 +66,52 @@ public class LaberintoStack {
         return tablero[aux.getFila()][aux.getColumna()]==' ';
     }
     private boolean esCaminoValidoNuevo(Coordenada coordenada) {
-        // TODO Implementar este método
-        return false; // Eliminar el return al implementar el método
+        boolean esValido = true;
+
+        if( !esValida(coordenada)) esValido = false;
+        else if(visitada(coordenada)) esValido = false;
+        else if(!esCamino(coordenada)) esValido = false;
+
+        return esValido;
     }
 
     public boolean existeCamino() {
-        // TODO Implementar este método
-        return false; // Eliminar el return al implementar el método
+        Coordenada actual = entrada;
+        boolean hayCamino = false;
+        visitados[actual.getFila()][actual.getColumna()] = true;
+        while(actual!=null && !hayCamino){
+            if(actual.iguales(salida)) {
+                hayCamino = true;
+                continue;
+            };
+            Coordenada izquierda = actual.izquierda();
+            Coordenada arriba = actual.arriba();
+            Coordenada abajo = actual.abajo();
+            Coordenada derecha = actual.derecha();
+
+            if(esCaminoValidoNuevo(izquierda)) {
+                pilaCaminos.push(izquierda);
+                visitados[izquierda.getFila()][izquierda.getColumna()] = true;
+            };
+            if(esCaminoValidoNuevo(arriba)) {
+                pilaCaminos.push(arriba);
+                visitados[arriba.getFila()][arriba.getColumna()] = true;
+            };
+            if(esCaminoValidoNuevo(abajo)) {
+                pilaCaminos.push(abajo);
+                visitados[abajo.getFila()][abajo.getColumna()] = true;
+            };
+            if(esCaminoValidoNuevo(derecha)) {
+                pilaCaminos.push(derecha);
+                visitados[derecha.getFila()][derecha.getColumna()] = true;
+            };
+            try{
+                actual = pilaCaminos.pop();
+            } catch(EmptyStackException exception){
+                actual = null;
+            }
+        }
+        return hayCamino;
     }
 
 
