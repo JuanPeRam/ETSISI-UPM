@@ -63,20 +63,51 @@ public class Laberinto {
         return tablero[aux.getFila()][aux.getColumna()]==' ';
     }
     private boolean esCaminoValidoNuevo(Coordenada coordenada) {
-        // TODO Implementar este método
         boolean esValido = true;
 
-        if( coordenada.getColumna() > tablero.length-1 || coordenada.getColumna() < 0
-        || coordenada.getFila() > tablero[0].length-1 || coordenada.getFila() < 0) esValido = false;
-        else if(visitados[coordenada.getColumna()][coordenada.getFila()]) esValido = false;
-        else if(tablero[coordenada.getColumna()][coordenada.getFila()] == 'X') esValido = false;
+        if( !esValida(coordenada)) esValido = false;
+        else if(visitada(coordenada)) esValido = false;
+        else if(!esCamino(coordenada)) esValido = false;
 
         return esValido;
     }
 
     public boolean existeCamino() {
-        // TODO Implementar este método
-        return false; // Eliminar el return al implementar el método
+        Coordenada actual = entrada;
+        boolean hayCamino = false;
+        visitados[actual.getFila()][actual.getColumna()] = true;
+        while(actual!=null && !hayCamino){
+            if(actual.iguales(salida)) {
+                hayCamino = true;
+                continue;
+            };
+            Coordenada izquierda = actual.izquierda();
+            Coordenada arriba = actual.arriba();
+            Coordenada abajo = actual.abajo();
+            Coordenada derecha = actual.derecha();
+
+            if(esCaminoValidoNuevo(izquierda)) {
+                pilaCaminos.apilar(izquierda);
+                visitados[izquierda.getFila()][izquierda.getColumna()] = true;
+            };
+            if(esCaminoValidoNuevo(arriba)) {
+                pilaCaminos.apilar(arriba);
+                visitados[arriba.getFila()][arriba.getColumna()] = true;
+            };
+            if(esCaminoValidoNuevo(abajo)) {
+                pilaCaminos.apilar(abajo);
+                visitados[abajo.getFila()][abajo.getColumna()] = true;
+            };
+            if(esCaminoValidoNuevo(derecha)) {
+                pilaCaminos.apilar(derecha);
+                visitados[derecha.getFila()][derecha.getColumna()] = true;
+            };
+
+            actual = pilaCaminos.desapilar();
+        }
+
+
+        return hayCamino;
     }
 
 

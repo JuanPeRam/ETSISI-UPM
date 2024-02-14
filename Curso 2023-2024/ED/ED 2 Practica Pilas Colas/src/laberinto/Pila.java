@@ -19,7 +19,7 @@ public class Pila {
     /**
      * Apila el dato en la cima de la pila
      */
-    public void apilar(int dato) {
+    public void apilar(Coordenada dato) {
         Nodo nuevo = new Nodo(dato, cima);
         cima = nuevo;
         numElementos++;
@@ -29,11 +29,11 @@ public class Pila {
      * Elimina la cima de la pila si existe, y devuelve como
      * resultado dicho dato.
      */
-    public int desapilar() {
-        int valor;
+    public Coordenada desapilar() {
+        Coordenada valor;
         if (this.vacia()) {
             System.out.println("Error, la pila está vacía");
-            valor = -9999;
+            valor = null;
         } else {
             valor = cima.getDato();
             cima = cima.getSiguiente();

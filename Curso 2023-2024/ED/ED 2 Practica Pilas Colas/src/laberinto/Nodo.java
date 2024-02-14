@@ -5,10 +5,10 @@ package laberinto;
  */
 public class Nodo {
 
-    private int dato;
+    private Coordenada dato;
     private Nodo siguiente;
 
-    public Nodo(int dato, Nodo siguiente) {
+    public Nodo(Coordenada dato, Nodo siguiente) {
         this.dato = dato;
         this.siguiente = siguiente;
     }
@@ -21,11 +21,11 @@ public class Nodo {
         this.siguiente = siguiente;
     }
 
-    public int getDato() {
+    public Coordenada getDato() {
         return dato;
     }
 
-    public void setDato(int dato) {
+    public void setDato(Coordenada dato) {
         this.dato = dato;
     }
 
