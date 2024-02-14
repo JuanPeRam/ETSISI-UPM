@@ -20,7 +20,7 @@ public class Cola {
     }
 
 
-    public void encolar(int dato) {    // Coloca el elemento dato al final de la cola
+    public void encolar(String dato) {    // Coloca el elemento dato al final de la cola
         Nodo nuevo;
         nuevo = new Nodo(dato, null);
         if (principio != null)
@@ -30,9 +30,9 @@ public class Cola {
         numElementos++;
     }
 
-    public int desencolar() {    //Devuelve el elemento del primero de la cola y lo elimina Si la cola está vacía, devuelve como resultado 0 y un mensaje de error
+    public String desencolar() {    //Devuelve el elemento del primero de la cola y lo elimina Si la cola está vacía, devuelve como resultado 0 y un mensaje de error
         Nodo nodo;
-        int resultado = -9999;
+        String resultado = null;
         if (principio == null)
             System.out.println("Error, la cola está vacía");
         else {

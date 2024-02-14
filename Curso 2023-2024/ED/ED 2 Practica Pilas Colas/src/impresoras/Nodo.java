@@ -5,10 +5,10 @@ package impresoras;
  */
 public class Nodo {
 
-    private int dato;
+    private String dato;
     private Nodo siguiente;
 
-    public Nodo(int dato, Nodo siguiente) {
+    public Nodo(String dato, Nodo siguiente) {
         this.dato = dato;
         this.siguiente = siguiente;
     }
@@ -21,11 +21,11 @@ public class Nodo {
         this.siguiente = siguiente;
     }
 
-    public int getDato() {
+    public String getDato() {
         return dato;
     }
 
-    public void setDato(int dato) {
+    public void setDato(String dato) {
         this.dato = dato;
     }
 
