@@ -104,7 +104,7 @@ hold on;
 
 t2 = 3*tc; %t2 es la suma de t1 + 2* tc (el doble de tiempo que t1)
 x2 = t2*v0;
-y2=y1+vy1*2*tc-a*4*(tc^2)/2; %componente y posición de salida en m
+y2=y1+vy1*2*tc-a*4*(tc.^2)/2; %componente y posición de salida en m
 vx2=v0; % componente x de la velocidad de salida en m/s
 vy2=vy1-a*2*tc;% componente y de la velocidad de salida en m/s
 alfa2=atan(vy2/vx2); %ángulo de salida en radianes
@@ -152,7 +152,7 @@ hold on;
 
 t3 = t2+(2*tc); %t2 es la suma de t1 + 2* tc (el doble de tiempo que t1)
 x3 = t3*v0;
-y3=y2+vy2*t3+a*(t3.^2)/2; %componente y posición de salida en m
+y3=y2+vy2*2*tc+a*4*(tc.^2)/2; %componente y posición de salida en m
 vx3=v0; % componente x de la velocidad de salida en m/s
 vy3=vy2+a*2*tc;% componente y de la velocidad de salida en m/s
 alfa3=atan(vy3/vx3); %ángulo de salida en radianes
@@ -200,7 +200,7 @@ hold on;
 
 t4 = t3+(2*tc); %t2 es la suma de t1 + 2* tc (el doble de tiempo que t1)
 x4 = t4*v0;
-y4=y3+vy3*2*tc+a*16*(tc^2)/2; %componente y posición de salida en m
+y4=y3+vy3*2*tc+a*4*(tc.^2)/2; %componente y posición de salida en m
 vx4=v0; % componente x de la velocidad de salida en m/s
 vy4=vy3+a*2*tc;% componente y de la velocidad de salida en m/s
 alfa4=atan(vy4/vx4); %ángulo de salida en radianes
