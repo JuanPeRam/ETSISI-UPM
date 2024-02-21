@@ -1,6 +1,6 @@
 package impresoras;
 /**
- * @author Estructuras de Datos
+ * @author Juan Pereira Rama bq0381 CITIM12
  * @version 1.0
  */
 public class Nodo {
