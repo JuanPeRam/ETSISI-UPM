@@ -79,6 +79,7 @@ public class LaberintoStack {
         Coordenada actual = entrada;
         boolean hayCamino = false;
         visitados[actual.getFila()][actual.getColumna()] = true;
+        System.out.println(entrada);
         while(actual!=null && !hayCamino){
             if(actual.iguales(salida)) {
                 hayCamino = true;
@@ -107,6 +108,7 @@ public class LaberintoStack {
             };
             try{
                 actual = pilaCaminos.pop();
+                System.out.println(actual);
             } catch(EmptyStackException exception){
                 actual = null;
             }

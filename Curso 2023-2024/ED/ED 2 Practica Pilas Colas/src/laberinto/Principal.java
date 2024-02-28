@@ -13,7 +13,7 @@ public class Principal {
         String fila2 = "X X XX";
         String fila3 = "   XX ";
         String fila4 = " X XX ";
-        String fila5 = " X X  ";
+        String fila5 = " X    ";
         tabla[0] = fila0.toCharArray();
         tabla[1] = fila1.toCharArray();
         tabla[2] = fila2.toCharArray();
@@ -47,7 +47,7 @@ public class Principal {
         entrada = new Coordenada(1, 0);
         salida = new Coordenada(3, 5);
         System.out.println();
-        System.out.println("USANDO LA CLASE Pila:");
+        System.out.println("USANDO LA CLASE Stack:");
         LaberintoStack laberinto = new LaberintoStack(tabla, entrada, salida);
         System.out.println();
         laberinto.mostrar();

@@ -76,6 +76,7 @@ public class Laberinto {
         Coordenada actual = entrada;
         boolean hayCamino = false;
         visitados[actual.getFila()][actual.getColumna()] = true;
+        System.out.println(entrada);
         while(actual!=null && !hayCamino){
             if(actual.iguales(salida)) {
                 hayCamino = true;
@@ -104,6 +105,7 @@ public class Laberinto {
             };
 
             actual = pilaCaminos.desapilar();
+            System.out.println(actual);
         }
 
 
