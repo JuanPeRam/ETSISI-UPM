@@ -63,13 +63,7 @@ public class Laberinto {
         return tablero[aux.getFila()][aux.getColumna()]==' ';
     }
     private boolean esCaminoValidoNuevo(Coordenada coordenada) {
-        boolean esValido = true;
-
-        if( !esValida(coordenada)) esValido = false;
-        else if(visitada(coordenada)) esValido = false;
-        else if(!esCamino(coordenada)) esValido = false;
-
-        return esValido;
+        return esValida(coordenada) && !visitada(coordenada) && esCamino(coordenada);
     }
 
     public boolean existeCamino() {
@@ -81,35 +75,27 @@ public class Laberinto {
             if(actual.iguales(salida)) {
                 hayCamino = true;
                 continue;
-            };
+            }
+
             Coordenada izquierda = actual.izquierda();
             Coordenada arriba = actual.arriba();
             Coordenada abajo = actual.abajo();
             Coordenada derecha = actual.derecha();
 
-            if(esCaminoValidoNuevo(izquierda)) {
-                pilaCaminos.apilar(izquierda);
-                visitados[izquierda.getFila()][izquierda.getColumna()] = true;
-            };
-            if(esCaminoValidoNuevo(arriba)) {
-                pilaCaminos.apilar(arriba);
-                visitados[arriba.getFila()][arriba.getColumna()] = true;
-            };
-            if(esCaminoValidoNuevo(abajo)) {
-                pilaCaminos.apilar(abajo);
-                visitados[abajo.getFila()][abajo.getColumna()] = true;
-            };
-            if(esCaminoValidoNuevo(derecha)) {
-                pilaCaminos.apilar(derecha);
-                visitados[derecha.getFila()][derecha.getColumna()] = true;
-            };
+            if(esCaminoValidoNuevo(izquierda)) aniadirCoordenada(izquierda);
+            if(esCaminoValidoNuevo(arriba)) aniadirCoordenada(arriba);
+            if(esCaminoValidoNuevo(abajo)) aniadirCoordenada(abajo);
+            if(esCaminoValidoNuevo(derecha)) aniadirCoordenada(derecha);
 
             actual = pilaCaminos.desapilar();
             System.out.println(actual);
         }
-
-
         return hayCamino;
+    }
+
+    private void aniadirCoordenada(Coordenada coordenada){
+        pilaCaminos.apilar(coordenada);
+        visitados[coordenada.getFila()][coordenada.getColumna()] = true;
     }
 
 

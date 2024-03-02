@@ -46,9 +46,9 @@ public class Cola {
         return resultado;
     }
 
-    public void mostrar() {
+    public void mostrar(int indice) {
         Nodo auxiliar;
-        System.out.println("Contenido de la cola: ");
+        System.out.printf("Contenido de la cola de la impresora %d: ",indice);
         auxiliar = principio;
         while (auxiliar != null) {
             System.out.print(auxiliar.getDato() + "  ");

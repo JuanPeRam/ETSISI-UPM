@@ -66,13 +66,8 @@ public class LaberintoStack {
         return tablero[aux.getFila()][aux.getColumna()]==' ';
     }
     private boolean esCaminoValidoNuevo(Coordenada coordenada) {
-        boolean esValido = true;
 
-        if( !esValida(coordenada)) esValido = false;
-        else if(visitada(coordenada)) esValido = false;
-        else if(!esCamino(coordenada)) esValido = false;
-
-        return esValido;
+        return esValida(coordenada) && !visitada(coordenada) && esCamino(coordenada);
     }
 
     public boolean existeCamino() {

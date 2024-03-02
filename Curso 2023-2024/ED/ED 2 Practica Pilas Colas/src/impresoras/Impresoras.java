@@ -50,7 +50,7 @@ public class Impresoras {
     }
     public void mostrarCola (int posicion) {
         if(posicion>=0 && posicion<capacidad){
-            vector[posicion].mostrar();
+            vector[posicion].mostrar(posicion);
         }
         else System.err.println("La posición de la cola es incorrecta");
     }
