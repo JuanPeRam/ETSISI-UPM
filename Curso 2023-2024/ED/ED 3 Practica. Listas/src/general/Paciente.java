@@ -50,4 +50,13 @@ public class Paciente {
     public void mostrar() {
         System.out.println("Nombre: " + nombre + ".  Síntomas: " + sintomas + ".  Estado: " + estado.name());
     }
+
+    public boolean esIgual(String nombre){
+        return this.getNombre().equals(nombre);
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: "+this.nombre+" Síntomas: "+this.getSintomas()+" Estado: "+this.estado.toString();
+    }
 }

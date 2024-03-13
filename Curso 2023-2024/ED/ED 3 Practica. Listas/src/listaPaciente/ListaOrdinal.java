@@ -6,6 +6,8 @@
 
 package listaPaciente;
 
+import general.Paciente;
+
 class ListaOrdinal {
 
     private Nodo inicio, fin;
@@ -23,7 +25,7 @@ class ListaOrdinal {
 
     /** Inserta el dato en la última posición de la lista
      */
-    public void insertar(int dato) {
+    public void insertar(Paciente dato) {
         Nodo nuevo = new Nodo(dato, null);
         if (this.estaVacia()){
             inicio = nuevo;
@@ -37,7 +39,7 @@ class ListaOrdinal {
     /** Inserta el dato en la posición indicada de la lista,
      *  si es posible.
      */
-    public void insertar(int dato, int posicion) {
+    public void insertar(Paciente dato, int posicion) {
         Nodo nuevo, anterior;
         if ((posicion > numElementos) || (posicion < 0)) {
             System.out.println("No es posible la inserción del " + dato);
@@ -64,11 +66,11 @@ class ListaOrdinal {
     /** Busca el dato que ocupa la posición recibida como parámetro,
      * en caso de existir.
      */
-    public int get(int posicion) {
+    public Paciente get(int posicion) {
         Nodo aux = inicio;
         if ((posicion > numElementos - 1) || (posicion < 0)) {
             System.out.println("No existe la posición " + posicion);
-            return -1;
+            return null;
         } else {
             for (int i = 0; i < posicion; i++) {
                 aux = aux.getSiguiente();
@@ -80,12 +82,12 @@ class ListaOrdinal {
     /** Borra el primer elemento de la lista cuyo dato coincide con el
      * parámetro recibido.
      */
-    public void borrar(int dato) {
+    public void borrar(String clave) {
         Nodo actual = inicio;
         Nodo anterior = null;
         boolean borrado = false;
         while (actual != null && !borrado){
-            if (actual.getDato() ==  dato) {  // Borrar actual
+            if (actual.getDato().esIgual(clave)) {  // Borrar actual
                 if (actual != inicio) {
                     anterior.setSiguiente(actual.getSiguiente());
                 } else {
@@ -107,10 +109,10 @@ class ListaOrdinal {
      * en caso de existir. En caso contrario, devuelve -1
      */
 
-    public int posicion(int dato) {
+    public int posicion(String clave) {
         Nodo actual = inicio;
         int pos = 0;
-        while (actual != null && actual.getDato() != dato) {
+        while (actual != null && !actual.getDato().esIgual(clave)) {
             actual = actual.getSiguiente();
             pos++;
         }
@@ -123,8 +125,8 @@ class ListaOrdinal {
 
     /** Determina si el dato recibido como parámetro existe en la lista.
      */
-    public boolean contiene(int dato) {
-        return this.posicion(dato) >= 0;
+    public boolean contiene(String clave) {
+        return this.posicion(clave) >= 0;
     }
 
     public int getNumElementos() {
