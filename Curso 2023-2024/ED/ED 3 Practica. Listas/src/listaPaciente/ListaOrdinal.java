@@ -105,6 +105,26 @@ class ListaOrdinal {
         }
     }
 
+    public void borrarAltas(){
+        Nodo actual = inicio;
+        Nodo anterior = null;
+        while(actual!=null){
+            if(actual.getDato().estaAlta()){
+                if(actual==inicio) inicio = actual.getSiguiente();
+                else if(actual==fin) {
+                    fin = anterior;
+                    fin.setSiguiente(null);
+                }
+                else anterior.setSiguiente(actual.getSiguiente());
+                numElementos--;
+            }
+            else{
+                anterior = actual;
+            }
+            actual = actual.getSiguiente();
+        }
+    }
+
     /** Devuelve la primera posición en la que se encuentra el dato,
      * en caso de existir. En caso contrario, devuelve -1
      */
