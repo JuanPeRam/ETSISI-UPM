@@ -111,11 +111,10 @@ class ListaOrdinal {
         while(actual!=null){
             if(actual.getDato().estaAlta()){
                 if(actual==inicio) inicio = actual.getSiguiente();
-                else if(actual==fin) {
-                    fin = anterior;
-                    fin.setSiguiente(null);
-                }
                 else anterior.setSiguiente(actual.getSiguiente());
+                if(actual==fin) {
+                    fin = anterior;
+                }
                 numElementos--;
             }
             else{
